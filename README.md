@@ -126,8 +126,8 @@ All the outputs including the checkpoints, predictions and evaluation scores wil
 We adopt the inference-Stage Fusion strategy from EIDER [2] to utilize the evidence predictions. To do so, we first need to obtain a threshold that minimizes the cross-entropy loss of RE on development set as below.
 
 ```bash
-bash scripts/ifs_bert.sh ${name} ${model_dir} dev # for BERT
-bash scripts/ifs_roberta.sh ${name} ${model_dir} dev # for RoBERTa
+bash scripts/isf_bert.sh ${name} ${model_dir} dev # for BERT
+bash scripts/isf_roberta.sh ${name} ${model_dir} dev # for RoBERTa
 ```
 
 where `${name}` is the identifier of this run displayed in wandb and `${model_dir}` is the directory that contains the checkpoint we are going to evaluate. The commands have two functions:
@@ -140,8 +140,8 @@ where `${name}` is the identifier of this run displayed in wandb and `${model_di
 With `${model_dir}/thresh` available, we can make predictions on test set with the commands below:
 
 ```bash
-bash scripts/ifs_bert.sh ${name} ${model_dir} test # for BERT
-bash scripts/ifs_roberta.sh ${name} ${model_dir} test # for RoBERTa
+bash scripts/isf_bert.sh ${name} ${model_dir} test # for BERT
+bash scripts/isf_roberta.sh ${name} ${model_dir} test # for RoBERTa
 ```
 
 where `${model_dir}` is the directory that contains the checkpoint we are going to evaluate. The program will generate a test file `result.json` in the official evaluation format. Feel free to compress and submit it to [Colab]([https://codalab.lisn.upsaclay.fr/competitions/365](https://codalab.lisn.upsaclay.fr/competitions/365#results)) for the official test score.

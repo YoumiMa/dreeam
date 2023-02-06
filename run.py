@@ -327,8 +327,8 @@ def main():
             
             wandb.log({"dev_F1": merged_re[-1] * 100, "dev_evi_F1": merged_evi[-1] * 100, "dev_F1_ign": merged_re_ign[-1] * 100})
 
-            offi_path = os.path.join(args.load_path, f"multi_{args.pred_file}")
-            score_path = os.path.join(args.load_path, f"{basename}_multi_scores.csv")
+            offi_path = os.path.join(args.load_path, f"fused_{args.pred_file}")
+            score_path = os.path.join(args.load_path, f"{basename}_fused_scores.csv")
             dump_to_file(merged_offi, offi_path, merged_output, score_path, thresh = thresh)
 
 

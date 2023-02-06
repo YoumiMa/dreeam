@@ -22,6 +22,6 @@ python run.py --do_train \
 --evi_thresh 0.2 \
 --evi_lambda ${LAMBDA} \
 --warmup_ratio 0.06 \
---num_train_epochs 2.0 \
+--num_train_epochs 10.0 \
 --seed ${SEED} \
 --num_class 97
