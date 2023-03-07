@@ -261,7 +261,7 @@ def official_evaluate(tmp, path, train_file = "train_annotated.json", dev_file =
     fact_in_train_distant = gen_train_facts(os.path.join(path, "train_distant.json"), truth_dir)
 
     truth = json.load(open(os.path.join(path, dev_file)))
-
+        
     std = {}
     tot_evidences = 0
     titleset = set([])
@@ -275,13 +275,15 @@ def official_evaluate(tmp, path, train_file = "train_annotated.json", dev_file =
         vertexSet = x['vertexSet']
         title2vectexSet[title] = vertexSet
 
+        if 'labels' not in x: # official test set from DocRED
+            continue
+        
         for label in x['labels']:
             r = label['r']
             h_idx = label['h']
             t_idx = label['t']
             std[(title, r, h_idx, t_idx)] = set(label['evidence'])
             tot_evidences += len(label['evidence'])
-
 
     tot_relations = len(std)
     tmp.sort(key=lambda x: (x['title'], x['h_idx'], x['t_idx'], x['r']))
@@ -292,7 +294,6 @@ def official_evaluate(tmp, path, train_file = "train_annotated.json", dev_file =
         y = tmp[i - 1]
         if (x['title'], x['h_idx'], x['t_idx'], x['r']) != (y['title'], y['h_idx'], y['t_idx'], y['r']):
             submission_answer.append(tmp[i])
-
 
     correct_re = 0
     correct_evidence = 0
@@ -335,7 +336,7 @@ def official_evaluate(tmp, path, train_file = "train_annotated.json", dev_file =
                 correct_in_train_distant += 1
 
     re_p = 1.0 * correct_re / len(submission_answer)
-    re_r = 1.0 * correct_re / tot_relations
+    re_r = 1.0 * correct_re / tot_relations if tot_relations != 0 else 0
     if re_p + re_r == 0:
         re_f1 = 0
     else:
