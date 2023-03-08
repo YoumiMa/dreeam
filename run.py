@@ -230,7 +230,7 @@ def main():
 
     # create directory to save checkpoints and predicted files
     time = str(datetime.datetime.now()).replace(' ','_')
-    save_path_ = os.path.join(args.save_path, f"{time}/")
+    save_path_ = os.path.join(args.save_path, f"{time}")
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     args.n_gpu = torch.cuda.device_count()
