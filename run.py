@@ -170,10 +170,10 @@ def evaluate(args, model, features, tag="dev"):
     official_results, results = to_official(preds, features, evi_preds = evi_preds, scores = scores, topks = topks)
     
     if len(official_results) > 0:
-        if tag == "test":
-            best_re, best_evi, best_re_ign, _ = official_evaluate(official_results, args.data_dir, args.train_file, args.test_file)
-        else:
+        if tag == "dev":
             best_re, best_evi, best_re_ign, _ = official_evaluate(official_results, args.data_dir, args.train_file, args.dev_file)
+        else:
+            best_re, best_evi, best_re_ign, _ = official_evaluate(official_results, args.data_dir, args.train_file, args.test_file)
     else:
         best_re = best_evi = best_re_ign = [-1, -1, -1]
     output = {
