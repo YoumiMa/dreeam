@@ -1,7 +1,9 @@
-NAME=$1
+TYPE=$1
 LOAD_DIR=$2
 LAMBDA=$3
 SEED=$4
+
+NAME=${TYPE}_lambda${LAMBDA}
 
 python run.py --do_train \
 --data_dir dataset/docred \
