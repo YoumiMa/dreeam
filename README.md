@@ -1,6 +1,6 @@
 # DREEAM
 
-This repository contains codes for EACL 2023 paper “DREEAM: Guiding Attention with Evidence for Improving Document-Level Relation Extraction”.
+This repository contains codes for EACL 2023 paper “[DREEAM: Guiding Attention with Evidence for Improving Document-Level Relation Extraction](https://aclanthology.org/2023.eacl-main.145.pdf)”.
 
 The backbone of this project follows [ATLOP](https://github.com/wzhouad/ATLOP)[1] and borrows some of the ideas from [EIDER](https://github.com/veronicium/eider)[2].
 
@@ -58,10 +58,10 @@ DREEAM
  |    |-- rel_info.json
 
 ```
-
+ 
 ## Training
 
-### Fully-supervised Setting
+### Fully-supervised setting
 
 To train DREEAM under a fully-supervised setting, make sure the file structure is the same as above, and run below:
 
@@ -145,6 +145,14 @@ bash scripts/isf_roberta.sh ${name} ${model_dir} test # for RoBERTa
 ```
 
 where `${model_dir}` is the directory that contains the checkpoint we are going to evaluate. The program will generate a test file `result.json` in the official evaluation format. Feel free to compress and submit it to [Colab]([https://codalab.lisn.upsaclay.fr/competitions/365](https://codalab.lisn.upsaclay.fr/competitions/365#results)) for the official test score.
+
+## Checkpoints
+
+Trained checkpoints have been uploaded to [google drive](https://drive.google.com/file/d/1Frs8PZiBAoN2l2elZUgYVcejbxbo2dJz/view?usp=sharing). Inside the .zip file 4 checkpoints are available:
++ bert_teacher_best.ckpt (chkpt after [fully-supervised training](#fully-supervised-setting))
++ roberta_teacher_best.ckpt (chkpt after [fully-supervised training](#fully-supervised-setting))
++ bert_student_best.ckpt (chkpt after [weakly-supervised setting](#weakly-supervised-setting))
++ roberta_student_best.ckpt (chkpt after [weakly-supervised setting](#weakly-supervised-setting))
 
 ## References
 
