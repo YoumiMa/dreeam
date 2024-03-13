@@ -5,7 +5,7 @@ SEED=$4
 
 NAME=${TYPE}_lambda${LAMBDA}
 
-python train.py --do_train \
+python run.py --do_train \
 --data_dir dataset/docred \
 --transformer_type roberta \
 --model_name_or_path roberta-large \
